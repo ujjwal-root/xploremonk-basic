@@ -2,14 +2,14 @@
 
 ## Check it Live
 
-Direct link: 
+Direct link: https://heroic-gelato-9f369d.netlify.app/
 
 ## Or run it locally
 
 Step 1: Download/clone git repo.\
-Step 2: Open Xploremonk project with VS Code.\
+Step 2: Open the Xploremonk project with VS Code.\
 Step 3: run script `npm install` to install all the node modules.\
-Step 4: run script `npm start` to run/deploy project on local host.\
+Step 4: run script `npm start` to run/deploy the project on the local host.\
 Step 5: Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Available Scripts
