@@ -15,21 +15,27 @@ const Form = ({ location, allFormData, containerVariants }) => {
         children: '',
         date: '',
     });
+
     useEffect(() => {
         const localData = JSON.parse(localStorage.getItem('formData'));
         console.log(localData);
-        setFormData({...formData, ...localData});
-    }, [])
-    
+        // Ensure localData is not null before merging
+        if (localData) {
+            setFormData({...formData, ...localData});
+        }
+    }, [formData]); // Add formData to the dependency array to avoid missing updates
+
     const handleSubmit = (e) => {
         e.preventDefault();
         allFormData(formData);
         localStorage.setItem('formData', JSON.stringify({ ...formData }));
         history.push('/confirm');
     }
+
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value});
     }
+
     return (
         <motion.div
             variants={containerVariants}
@@ -49,7 +55,7 @@ const Form = ({ location, allFormData, containerVariants }) => {
                 </div>
                 <div className='form-b'>
                     <input type='email' required name='email' value={formData.email} onChange={handleChange} placeholder='Email addresss' />
-                    <input type='date' required name='date' value={formData.data} onChange={handleChange} />
+                    <input type='date' required name='date' value={formData.date} onChange={handleChange} /> {/* Corrected formData.data to formData.date */}
                 </div>
                 <div className='form-c'>
                     <select name="class" required onChange={handleChange} >
@@ -63,7 +69,7 @@ const Form = ({ location, allFormData, containerVariants }) => {
                     <input type='text' required name='children' value={formData.children} onChange={handleChange} placeholder='Children' />
                 </div>
                 <div className='form-e'>
-                    <Link to='/'>
+                    <Link to='/' rel="noreferrer"> {/* Added rel="noreferrer" */}
                         <span>Home</span>
                     </Link>
 

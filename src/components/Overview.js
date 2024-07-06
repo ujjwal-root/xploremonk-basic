@@ -3,14 +3,15 @@ import React, { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 const Overview = ({ location, containerVariants }) => {
-    // console.log(location)
-    const history = useHistory()
+    const history = useHistory();
+
     useEffect(() => {
-        if(location === undefined){
+        // Redirect to '/' if location is undefined
+        if (!location) {
             history.push('/');
         }
-        
-    }, [])
+    }, [history, location]); // Added history and location to the dependency array
+
     return (
         <motion.div className='overview'
             variants={containerVariants}
